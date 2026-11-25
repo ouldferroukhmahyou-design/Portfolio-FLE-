@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio FLE — Ressources & Séquences Pédagogiques</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #1e40af;
+      --primary-light: #eff6ff;
+      --accent: #be123c;
+      --border: #e2e8f0;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    main {
+      max-width: 1040px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Section Présentation */
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.25rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .badge-free {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 {
+      font-size: 1.9rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 72ch;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
+    }
+
+    /* Filtres CECRL */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .filters {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.15s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* Grille de séquences */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .level-tag {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+
+    .skill-tag {
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .card h3 {
+      font-size: 1.12rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 0.5rem 0.85rem;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid var(--primary);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+    }
+
+    /* Démarche & Compétences */
+    .two-cols {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .box h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .box ul {
+      padding-left: 1.2rem;
+      color: var(--muted);
+    }
+
+    .box li {
+      margin-bottom: 0.45rem;
+    }
+
+    footer {
+      max-width: 1040px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand">Portfolio FLE — Prénom Nom</a>
+      <nav class="nav-links">
+        <a href="#sequences">Séquences &amp; Fiches</a>
+        <a href="#demarche">Démarche pédagogique</a>
+        <a href="#parcours">Parcours &amp; Certifications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="badge-free">Ressources libres &amp; gratuites — Usage éducatif</span>
+      <h1>Enseignant(e) de Français Langue Étrangère (FLE)</h1>
+      <p>
+        Conception de séquences actionnelles, supports authentiques et activités interactives
+        du niveau A1 au niveau C1. Toutes les fiches présentées ici sont librement téléchargeables
+        et réutilisables en classe ou en autonomie.
+      </p>
+      <div class="hero-meta">
+        <span>Publics : Adultes, Étudiants, Scolaires</span>
+        <span>Approche : Perspective actionnelle (CECRL)</span>
+        <span>Outils : Numérique éducatif &amp; Ludopédagogie</span>
+      </div>
+    </section>
+
+    <section id="sequences">
+      <div class="section-header">
+        <h2>Séquences et supports pédagogiques</h2>
+        <div class="filters" aria-label="Filtrer par niveau CECRL">
+          <button class="filter-btn active" data-filter="all">Tous</button>
+          <button class="filter-btn" data-filter="A1-A2">A1 – A2</button>
+          <button class="filter-btn" data-filter="B1-B2">B1 – B2</button>
+          <button class="filter-btn" data-filter="C1">C1</button>
+        </div>
+      </div>
+
+      <div class="grid" id="cards-grid">
+        <article class="card" data-level="A1-A2">
+          <div>
+            <div class="card-top">
+              <span class="level-tag">Niveau A1</span>
+              <span class="skill-tag">Interaction orale</span>
+            </div>
+            <h3>Commander au café et au marché</h3>
+            <p>
+              Séquence complète avec lexique illustré, dialogues authentiques, jeux de rôle
+              et grille d'auto-évaluation pour les premiers échanges du quotidien.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a href="#" class="btn btn-primary" download>Télécharger la fiche</a>
+            <button class="btn btn-outline" onclick="alert('Objectif : demander un prix, commander et payer en situation réelle.')">Objectifs</button>
+          </div>
+        </article>
+
+        <article class="card" data-level="A1-A2">
+          <div>
+            <div class="card-top">
+              <span class="level-tag">Niveau A2</span>
+              <span class="skill-tag">Production écrite</span>
+            </div>
+            <h3>Raconter un souvenir de voyage</h3>
+            <p>
+              Travail progressif sur l'alternance passé composé / imparfait à partir de cartes postales
+              et d'un atelier d'écriture guidée.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a href="#" class="btn btn-primary" download>Télécharger la fiche</a>
+            <button class="btn btn-outline" onclick="alert('Objectif : décrire un cadre passé et relater une suite d’événements.')">Objectifs</button>
+          </div>
+        </article>
+
+        <article class="card" data-level="B1-B2">
+          <div>
+            <div class="card-top">
+              <span class="level-tag">Niveau B1</span>
+              <span class="skill-tag">Compréhension orale</span>
+            </div>
+            <h3>Décrypter l'actualité francophone</h3>
+            <p>
+              Exploitation pédagogique d'extraits radiophoniques courts : repérage des enjeux,
+              reformulation et débat structuré en classe.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a href="#" class="btn btn-primary" download>Télécharger la fiche</a>
+            <button class="btn btn-outline" onclick="alert('Objectif : comprendre les points essentiels d’une intervention radio et donner son opinion.')">Objectifs</button>
+          </div>
+        </article>
+
+        <article class="card" data-level="B1-B2">
+          <div>
+            <div class="card-top">
+              <span class="level-tag">Niveau B2</span>
+              <span class="skill-tag">Argumentation</span>
+            </div>
+            <h3>Débattre de la transition écologique</h3>
+            <p>
+              Dossier thématique avec connecteurs logiques, prise de position nuancée et simulation
+              d'une réunion citoyenne.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a href="#" class="btn btn-primary" download>Télécharger la fiche</a>
+            <button class="btn btn-outline" onclick="alert('Objectif : développer une argumentation claire et défendre un point de vue.')">Objectifs</button>
+          </div>
+        </article>
+
+        <article class="card" data-level="C1">
+          <div>
+            <div class="card-top">
+              <span class="level-tag">Niveau C1</span>
+              <span class="skill-tag">Synthèse &amp; Nuance</span>
+            </div>
+            <h3>Analyser l'implicite et l'ironie dans la presse</h3>
+            <p>
+              Étude stylistique de chroniques et d'éditoriaux francophones, repérage des registres
+              de langue et rédaction d'une synthèse critique.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a href="#" class="btn btn-primary" download>Télécharger la fiche</a>
+            <button class="btn btn-outline" onclick="alert('Objectif : saisir les sous-entendus culturels et produire un discours structuré.')">Objectifs</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="two-cols">
+      <div class="box" id="demarche">
+        <h2>Démarche pédagogique</h2>
+        <ul>
+          <li><strong>Perspective actionnelle :</strong> chaque unité aboutit à une tâche finale concrète et socialement ancrée.</li>
+          <li><strong>Documents authentiques :</strong> presse, podcasts, affiches et supports numériques francophones variés.</li>
+          <li><strong>Différenciation :</strong> activités modulables selon les profils linguistiques et les rythmes d'apprentissage.</li>
+          <li><strong>Partage libre :</strong> diffusion gratuite sous licence Creative Commons (CC BY-NC-SA).</li>
+        </ul>
+      </div>
+
+      <div class="box" id="parcours">
+        <h2>Parcours &amp; Qualifications</h2>
+        <ul>
+          <li><strong>Formation :</strong> Master Didactique des Langues / FLE (ou DAEFLE).</li>
+          <li><strong>Évaluation :</strong> Habilitation examinateur-correcteur DELF-DALF (A1 à C2).</li>
+          <li><strong>Expériences :</strong> Alliances Françaises, centres universitaires de langue, enseignement en ligne.</li>
+          <li><strong>Spécialités :</strong> Français sur Objectifs Universitaires (FOU) et phonétique corrective.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div>
+      <strong>Contact :</strong> prenom.nom@exemple.fr
+    </div>
+    <div>
+      Licence Creative Commons CC BY-NC-SA — Hébergé gratuitement sur GitHub Pages
+    </div>
+  </footer>
+
+  <script>
+    // Filtrage dynamique par niveau CECRL
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        buttons.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        cards.forEach((card) => {
+          if (filter === 'all' || card.dataset.level === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
